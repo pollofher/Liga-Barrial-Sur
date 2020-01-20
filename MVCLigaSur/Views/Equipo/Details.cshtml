@@ -1,0 +1,82 @@
+﻿@model MVCLigaSur.Models.Equipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_equipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color_equipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fundacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fundacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto_equipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_equipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_equipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dirigente.ced_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dirigente.ced_dirigente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Equipo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

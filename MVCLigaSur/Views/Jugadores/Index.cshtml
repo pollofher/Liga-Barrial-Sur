@@ -1,0 +1,261 @@
+﻿@model IEnumerable<MVCLigaSur.Models.Equipo>
+@{
+    ViewBag.Title = "Index";
+}
+
+<br /><br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <h2 class="panel-title pull-left" style="margin-left:10px;">
+                <strong>Jugadores</strong>
+            </h2>
+            <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">Agregar Jugadores</button>
+        </div>
+    </div>
+
+    @*Receive All Database Data From Controller And Display Those Data In Client Side*@
+
+    @if (Model.Count() != 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="panel-body">
+                <table class="table table-striped table-responsive">
+                    <tbody>
+                        <tr>
+                            <td>Club : @item.nom_equipo </td>
+                            <td>Colores : @item.color_equipo </td>
+                            <td>Fundación : @item.fundacion</td>
+                            <td>Escudo :@item.foto_equipo</td>
+                            <td>Liga: @item.liga</td>
+                            <td>Serie: @item.serie</td>
+                            <td>Estado: @item.Estado_equipo</td>
+                            <td>Dirigente: @item.id_dirigente</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <table class="table table-bjugadored">
+                                    <tbody>
+                                        <tr>
+                                            <th>Cédula</th>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Fecha Nacimiento</th>
+                                            <th>Carnet</th>
+                                            <th>Fotografía</th>
+                                            <th>Afiliación</th>
+                                            <th>Estado civil</th>
+                                            <th>Intrucción</th>
+                                            <th>Profesión</th>
+                                            <th>Provincia</th>
+                                            <th>Parroquia</th>
+                                            
+                                        </tr>
+                                       
+                                        @foreach (var jugador in item.Jugador)
+                                        {
+                                            <tr>
+                                                <td>@jugador.ced_jugador</td>
+                                                <td>@jugador.nom_jugador</td>
+                                                <td>@jugador.apell_jugador</td>
+                                                <td>@jugador.fechaNac_jugador</td>
+                                                <td>@jugador.carnet_jugador</td>
+                                                <td>@jugador.foto_jugador</td>
+                                                <td>@jugador.fecha_filiacion</td>
+                                                <td>@jugador.estado_civil</td>
+                                                <td>@jugador.instruccion</td>
+                                                <td>@jugador.profesion</td>
+                                                <td>@jugador.provincia</td>
+                                                <td>@jugador.parroquia</td>
+                                            </tr>
+                                            
+                                        }
+                                    </tbody>
+                                </table>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                                                }
+                                            }
+                                                                                     
+</div>
+
+<!---->
+<div class="modal fade" id="newOrderModal">
+    <div class="modal-dialog modal-lg" style=" width: 900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Add New Order</h4>
+            </div>
+            <form id="NewOrderForm">
+                <div class="modal-body">
+                    @*Customer Details*@
+                    <h5 style="color:#ff6347">Equipo Detalles</h5>
+                    <hr />
+                    <div class="form-horizontal">
+                        <input type="hidden" id="CustomerId" />
+                        <div class="form-group">
+                            <label class="control-label col-md-2">
+                                Club
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="name" name="name" placeholder="Club" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Colores
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="address" name="address" placeholder="Colores" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    @*Order Details*@
+                    <h5 style="margin-top:10px;color:#ff6347">Jugadores Detalles</h5>
+                    <hr />
+                    <div class="form-horizontal">
+                        <input type="hidden" id="OrderId" />
+                        <div class="form-group">
+                            <label class="control-label col-md-2">
+                                Cédula
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="ced_jugador" name="ced_jugador" placeholder="Cédula" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Nombres
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="nom_jugador" name="nom_jugador" placeholder="Nombres completos" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">
+                                Apellidos
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="apell_jugador" name="apell_jugador" placeholder="Apellidos completos" class="form-control" />
+                            </div>
+                            <div class="col-md-2 col-lg-offset-4">
+                                <a id="addToList" class="btn btn-primary">Añadir a Lista</a>
+                            </div>
+                        </div>
+
+                        <table id="detailsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%">Cédula</th>
+                                    <th style="width:20%">Nombres</th>
+                                    <th style="width:15%">Apellidos</th>
+                                    
+                                    <th style="width:10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button id="saveOrder" type="submit" class="btn btn-danger">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+        //Show Modal.
+        function addNewOrder() {
+            $("#newOrderModal").modal();
+        }
+        //Add Multiple Order.
+        $("#addToList").click(function (e) {
+            e.preventDefault();
+
+            if ($.trim($("#ced_jugador").val()) == "" || $.trim($("#nom_jugador").val()) == "" || $.trim($("#apell_jugador").val()) == "") return;
+
+            var cedula = $("#ced_jugador").val(),
+                nombres = $("#nom_jugador").val(),
+                apellidos = $("#apell_jugador").val(),
+                detailsTableBody = $("#detailsTable tbody");
+
+            var jugadorItem = '<tr><td>' + ced_jugador + '</td><td>' + nom_jugador +  '</td><td>'+apell_jugador+'</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            detailsTableBody.append(jugadorItem);
+            clearItem();
+        });
+        //After Add A New Order In The List, Clear Clean The Form For Add More Order.
+        function clearItem() {
+            $("#ced_jugador").val('');
+            $("#nom_jugador").val('');
+            $("#apell_jugador").val('');
+        }
+        // After Add A New Order In The List, If You Want, You Can Remove It.
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+        //After Click Save Button Pass All Data View To Controller For Save Database
+        function saveOrder(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/Jugadores/SaveOrder",
+                data: data,
+                success: function (result) {
+                    alert(result);
+                    location.reload();
+                },
+                error: function () {
+                    alert("Error!")
+                }
+            });
+        }
+        //Collect Multiple Order List For Pass To Controller
+        $("#saveOrder").click(function (e) {
+            e.preventDefault();
+
+            var jugadorArr = [];
+            jugadorArr.length = 0;
+
+            $.each($("#detailsTable tbody tr"), function () {
+                jugadorArr.push({
+                    ced_jugador: $(this).find('td:eq(0)').html(),
+                    nom_jugador: $(this).find('td:eq(1)').html(),
+                    apell_jugador: $(this).find('td:eq(2)').html(),
+
+                    
+                });
+            });
+
+
+            var data = JSON.stringify({
+                Club: $("#nom_equipo").val(),
+                Color: $("#color_equipo").val(),
+                jugador: jugadorArr
+            });
+
+            $.when(saveOrder(data)).then(function (response) {
+                console.log(response);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,58 @@
+﻿@model MVCLigaSur.Models.Dirigente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dirigente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ced_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ced_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apelli_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apelli_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dir_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dir_dirigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telf_dirigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telf_dirigente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_dirigente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
